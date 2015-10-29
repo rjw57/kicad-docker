@@ -3,9 +3,9 @@
 This repository contains a Docker container which installs the latest release
 candidate of the KiCad electronic design automation suite.
 
-The meat of the repo is the [kicad.sh] script. Ensure you have docker installed
-and available. You must also be running the X windowing system. (If you're
-running Linux, this is almost certainly true.)
+The meat of the repo is the [kicad.sh](kicad.sh) script. Ensure you have docker
+installed and available. You must also be running the X windowing system. (If
+you're running Linux, this is almost certainly true.)
 
 The wrapper script does not need the rest of the repo so one can simply execute
 KiCad via:
