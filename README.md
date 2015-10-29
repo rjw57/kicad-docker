@@ -7,11 +7,12 @@ The meat of the repo is the [kicad.sh] script. Ensure you have docker installed
 and available. You must also be running the X windowing system. (If you're
 running Linux, this is almost certainly true.)
 
-Execute KiCad via:
+The wrapper script does not need the rest of the repo so one can simply execute
+KiCad via:
 
 ```console
-$ git clone https://github.com/rjw57/kicad-docker
-$ kicad-docker/kicad.sh /path/to/your/project.pro
+$ curl -O -L //github.com/rjw57/kicad-docker/raw/master/kicad.sh
+$ bash kicad.sh /path/to/your/project.pro
 ```
 
 **IMPORTANT**: The launched KiCad will only have access to the contents of the
