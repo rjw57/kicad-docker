@@ -55,16 +55,23 @@ XAUTH=$(mktemp --tmpdir docker.xauth.XXXXXX)
 touch "${XAUTH}"
 xauth nlist $DISPLAY | sed -e 's/^..../ffff/' | xauth -f ${XAUTH} nmerge -
 
-CONTAINER_PROJECT="/project"
+CONTAINER_PROJECT="/kicad/project"
 export USER_UID=$(id -u)
 export USER_GID=$(id -g)
 export USER_GROUP=$(id -gn)
 export USER_NAME=$(id -un)
 export KICAD_PROJECT="${CONTAINER_PROJECT}/${PROJECT_FILENAME}"
+
+KICAD_CONFIG_DIR="${HOME}/.config/kicad"
+if [ ! -d "${KICAD_CONFIG_DIR}" ]; then
+	mkdir -p "${KICAD_CONFIG_DIR}"
+fi
+
 docker run -it \
 	-e DISPLAY -e USER_NAME -e USER_GROUP -e USER_UID -e USER_GID \
 	-e KICAD_PROJECT\
 	-v "${X11_SOCK_DIR}:${X11_SOCK_DIR}:rw" \
 	-v "${XAUTH}:${XAUTH}:rw" -e "XAUTHORITY=${XAUTH}" \
 	-v "${PROJECT_DIRECTORY}:${CONTAINER_PROJECT}:rw" \
+	-v "${KICAD_CONFIG_DIR}:/kicad/config:rw" \
 	"${DOCKER_IMAGE_NAME}"
