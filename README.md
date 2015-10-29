@@ -11,7 +11,7 @@ The wrapper script does not need the rest of the repo so one can simply execute
 KiCad via:
 
 ```console
-$ curl -O -L //github.com/rjw57/kicad-docker/raw/master/kicad.sh
+$ curl -O -L https://github.com/rjw57/kicad-docker/raw/master/kicad.sh
 $ bash kicad.sh /path/to/your/project.pro
 ```
 
